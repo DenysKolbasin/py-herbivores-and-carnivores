@@ -18,10 +18,6 @@ class Animal:
              f"Health: {self.health}, "
              f"Hidden: {self.hidden}}}")
 
-    @classmethod
-    def __str__(cls) -> str:
-        return str(cls.alive)
-
 
 class Herbivore(Animal):
     def hide(self) -> None:
@@ -34,5 +30,6 @@ class Carnivore(Animal):
             return
         print(f"{self.name} bite {victim.name}")
         victim.health -= 50
-        if victim.health <= 0 and victim in Animal.alive:
-            Animal.alive.remove(victim)
+        if victim.health <= 0:
+            if victim in Animal.alive:
+                Animal.alive.remove(victim)
